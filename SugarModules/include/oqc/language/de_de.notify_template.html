@@ -1,0 +1,96 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Enterprise Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/products/sugar-enterprise-eula.html
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2011 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+-->
+
+
+<!-- BEGIN: oqc_Task_new_Subject -->
+Neue SugarCRM TeamAufgabe - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_new_Subject -->
+<!-- BEGIN: oqc_Task_new -->
+{ASSIGNER} hat {ASSIGNED_USER} eine TeamAufgabe zugewiesen.
+Die TeamAufgabe ist erledigt, wenn {TASK_TYPE} Sie überprüft und erledigt hat.
+Thema: {TASK_SUBJECT}
+Priorität: {TASK_PRIORITY}
+fällig am: {TASK_DUEDATE}
+Status: {TASK_STATUS}
+Beschreibung: {TASK_DESCRIPTION}
+Bitte den Empfang der TeamAufgabe bestätigen:
+<{ACCEPT_URL}&accept_status=accept>
+Sie können die TeamAufgabe hier überprüfen:
+<{URL}>
+<!-- END: oqc_Task_new -->
+
+<!-- BEGIN: oqc_Task_delete_Subject -->
+Gelöschte SugarCRM TeamAufgabe - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_delete_Subject -->
+<!-- BEGIN: oqc_Task_delete -->
+{ASSIGNER} hat eine von {ASSIGNED_USER}s TeamAufgaben gelöscht.
+
+Thema: :{TASK_SUBJECT}
+Priorität {TASK_PRIORITY}
+fällig am: {TASK_DUEDATE}
+Status: {TASK_STATUS}
+Beschreibung: {TASK_DESCRIPTION}
+
+Sie können die TeamAufgabe hier überprüfen:
+<{URL}>
+<!-- END: oqc_Task_delete -->
+
+<!-- BEGIN: oqc_Task_completed_Subject -->
+Erledigte SugarCRM TeamAufgabe - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_completed_Subject -->
+<!-- BEGIN: oqc_Task_completed -->
+{ASSIGNER}: Die TeamAufgabe {TASK_ID} ist erledigt!
+
+Thema: {TASK_SUBJECT}
+Priorität: {TASK_PRIORITY}
+fällig am: {TASK_DUEDATE}
+Status: {TASK_STATUS}
+Beschreibung: {TASK_DESCRIPTION}
+
+Sie können die TeamAufgabe hier überprüfen:
+<{URL}>
+<!-- END: oqc_Task_completed -->
+
+<!-- BEGIN: oqc_Task_overdue_Subject -->
+Überfällige SugarCRM TeamAufgabe - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_overdue_Subject -->
+<!-- BEGIN: oqc_Task_overdue -->
+{ASSIGNER}: Die TeamAufgabe {TASK_ID} ist überfällig!
+Bitte überarbeiten Sie die TeamAufgabe so schnell wie möglich!
+
+Thema: {TASK_SUBJECT}
+Priorität: {TASK_PRIORITY}
+fällig am: {TASK_DUEDATE}
+Status: {TASK_STATUS}
+Beschreibung: {TASK_DESCRIPTION}
+
+Sie können die TeamAufgabe hier überprüfen:
+<{URL}>
+<!-- END: oqc_Task_overdue -->
+

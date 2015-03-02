@@ -1,0 +1,17 @@
+{if 'false' == $readOnly}
+{$sqsJavascript}  {* required for initialisation of quicksearch fields *}
+{/if}
+
+<script type="text/javascript">
+var uniqueServicesDataTable;
+
+OqcProducts.initServicesTable('unique', '{$id}', true, {$readOnly});
+
+YAHOO.util.Event.addListener(document.getElementsByName('currency_id'), 'change', function() {ldelim}
+	OqcProducts.updateCurrency(uniqueServicesDataTable);
+	OqcProducts.updateSumAndSerializeTableData(uniqueServicesDataTable);
+	{* alert('currency changed'); *}
+{rdelim});
+
+OqcCommon.disableAutoSaveOnHittingReturnKey();
+</script>

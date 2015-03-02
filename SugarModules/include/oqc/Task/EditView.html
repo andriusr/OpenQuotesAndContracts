@@ -1,0 +1,59 @@
+
+{include file="include/oqc/Task/css.html"}
+
+<script type="text/javascript">
+{$OQC_DATA}
+
+var allowUserEdit = '{$allowUserEdit}' ;{* indicates whether user is allowed to add/delete users into table; only creted_by and default users are allowed to do this *}
+var encodedUserRequestData = {$encodedUserRequestData};
+var encodedDocumentRequestData = {$encodedDocumentRequestData};
+var languageStrings = OQC_DATA.languageStrings; {* language strings for use within javascript code are transmitted in json encoded form; uses oqc_Task strings *}
+var oqc_USER_DATA = OQC_DATA.task_data;
+var current_user = '{$user_id}';
+
+
+
+{* translation for dropdown labels used in YUI table *}
+var dropdownLabelsProgress = {$dropdownLabelsProgressJSON};
+var dropdownLabelsProgressArray = OqcCommon.convertDropdownMenu(dropdownLabelsProgress);
+var dropdownLabelsResolution = {$dropdownLabelsResolutionJSON} ;
+var dropdownLabelsResolutionArray = OqcCommon.convertDropdownMenu(dropdownLabelsResolution);
+var dropdownLabelsAccepted = {$dropdownLabelsAcceptedJSON};
+var dropdownLabelsAcceptedArray = OqcCommon.convertDropdownMenu(dropdownLabelsAccepted);
+var oqcYUIMessages = {$oqcYUIMessages};
+
+
+</script>
+
+<input type="hidden" id="oqcUsersJsonString" name="oqcUsersJsonString" value='' />
+{* datatable containers have to be in a container with class="yui-skin-sam" unless images are not loaded!! *}
+{if $isDone}
+<h3>{$MOD.LBL_DONE_MESSAGE}</h3><br>
+{/if}
+<span class="yui-skin-sam">
+<div id='oqcUsersContainer' style="margin-bottom: 10px;"></div> 
+{if $allowUserEdit || $allowRowEdit }
+<table width="100%" style="border: 1px; background-color: none;">
+
+    <tr valign="top">
+        <td> {if $allowUserEdit }
+                <input class="button" type="button" value="{$MOD.LBL_ADD_USER}" name="button" onClick='OqcCommon.setModifiedFlag(); open_popup("Users", 600, 400, "", true, false, encodedUserRequestData, "single", true );' /> {/if}
+                <span id='oqc_attachment_buttons'  {if !$allowRowEdit } style="display:none;" {/if} >   
+                <input class='button' type='button' value="{$MOD.LBL_ADD_ATTACHMENT}" name="button" onClick='OqcCommon.setModifiedFlag(); open_popup("Documents", 600, 400, "", true, true, encodedDocumentRequestData, "single", true);' />
+                <input class='button' type='button' value="{$MOD.LBL_CREATE_ATTACHMENT}" name='button' onclick='OqcCommon.setModifiedFlag(); open_CreatePopup("Documents", 950, 480, encodedDocumentRequestData);' />  
+                </span>             
+        </td>
+    </tr>
+</table>
+{/if}
+</span>
+
+<script type="text/javascript">
+var oqcUsersDataTable;
+
+OqcTask.initUsersTable(false, allowUserEdit);
+
+
+</script>
+
+

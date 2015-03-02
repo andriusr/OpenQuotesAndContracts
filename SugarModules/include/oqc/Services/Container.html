@@ -1,0 +1,27 @@
+<div id='{$prefix}Container' style="margin-bottom: 10px; {if ($hidden)}display:none; {/if}"></div> {* container of datatable has to be a div! *}
+{if 'false' == $readOnly}
+<table width="100%" style="border: 1px; background-color: none; {if ($hidden)}display:none;{/if}">
+{else}
+<table width="100%" style="border: 1px; background-color: #FFFFFF;  {if ($hidden)}display:none;{/if}">
+{/if}
+    <tr valign="top">
+        <td>
+            {if 'false' == $readOnly}
+                {if "unique" == $prefix}
+                <input class="button" type="button" value="{$languageStrings.add}" name="button" onClick="OqcServices.selectProduct('{$prefix}');" />
+                <input class="button" type="button" value="{$languageStrings.addCustom}" name="button" onClick="OqcServices.addCustomServiceRow('{$prefix}');" />
+                <input class="button" type="button" value="{$languageStrings.addDefaultLines}" name="button" onClick="OqcServices.addDefaultLines('{$prefix}');" />
+                {else}
+                <input class="button" type="button" value="{$languageStrings.addRecurring}" name="button" onClick="OqcServices.selectProduct('{$prefix}');" />
+                <input class="button" type="button" value="{$languageStrings.addCustomService}" name="button" onClick="OqcServices.addCustomServiceRow('{$prefix}');" />
+                {/if}
+            {/if}
+        </td>
+      <!--  <td style="text-align:right; font-weight: bold; border-bottom: none;">
+            <input type="checkbox" name="{$prefix}_has_total_negotiated_price" id="{$prefix}HasTotalNegotiatedPrice" {if 'true' == $readOnly}disabled="disabled"{/if} {if $totalNegotiatedPrice}checked{/if} /> {$languageStrings.totalNegotiatedPrice} <br />
+            <div id='{$prefix}NegotiatedPriceContainer' style="float: right;"></div>
+            {* used for serialisation / saving *}
+            <input type="hidden" value="" name="{$prefix}_total_negotiated_price" id="{$prefix}TotalNegotiatedPrice" />
+        </td> -->
+    </tr>
+</table>

@@ -1,0 +1,26 @@
+<script type="text/javascript" src="include/oqc/common/OQC.js"></script>
+<script type="text/javascript" src="include/oqc/ExternalContracts/Positions.js"></script>
+
+<div id="positionsContainer" style="margin-top:10px;margin-bottom:10px;"></div>
+
+<script type="text/javascript">
+document.write('<input class="button" type="button" onClick="OqcExternalContractsPositions.addPosition(OqcExternalContractsPositions.defaultPositionTableName, new OqcExternalContractsPositions.Position(OqcCommon.getRandomString(), \'\', 1, 0, \'\', \'hardware\')); OqcCommon.toggleTableDisplaying(OqcExternalContractsPositions.defaultPositionTableName); OqcCommon.setModifiedFlag();" value="' + SUGAR.language.get('oqc_ExternalContract', 'LBL_ADD_POSITION') + '" style="margin-bottom: 10px;" />');
+
+var readOnly = false; 
+OqcExternalContractsPositions.createPositionsTable('positionsContainer', OqcExternalContractsPositions.defaultPositionTableName, [], readOnly);
+{foreach from=$positionsArray item=position}
+OqcExternalContractsPositions.addPosition(
+	OqcExternalContractsPositions.defaultPositionTableName,
+	new OqcExternalContractsPositions.Position(
+		'{$position.id}',
+		'{$position.name}', 
+		'{$position.quantity}', 
+		{$position.price}, 
+		'{$position.description}',
+		'{$position.type}'
+	),
+	readOnly
+);
+{/foreach}
+OqcCommon.toggleTableDisplaying(OqcExternalContractsPositions.defaultPositionTableName);
+</script>

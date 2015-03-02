@@ -1,0 +1,51 @@
+<link rel="stylesheet" type="text/css" href="include/oqc/Services/yuiBuild/fonts/fonts-min.css" />
+<link rel="stylesheet" type="text/css" href="include/oqc/Services/yuiBuild/assets/skins/sam/calendar.css" />
+<link rel="stylesheet" type="text/css" href="include/oqc/Services/yuiBuild/assets/skins/sam/datatable.css" />
+<link rel="stylesheet" type="text/css" href="include/oqc/Services/yuiBuild/assets/skins/sam/button.css" />
+<link rel="stylesheet" type="text/css" href="include/oqc/Services/yuiBuild/assets/skins/sam/menu.css" />
+{*
+	to be able to align some cell content on the right side of the colums (like prices, quantities, sums) we create another style 'align-right'.
+	during datatable initialisation we apply the style to the colums using the className: 'align-right' attribute.
+	for more information see http://www.satyam.com.ar/yui/widgetstyles.html
+	1.7.7 styles below are necessary for correct rendering of YUI tables
+*}
+<style type="text/css">
+.yui-skin-sam .yui-dt td.align-right {ldelim}
+	text-align: right;
+{rdelim}
+
+.yui-dt th .yui-dt-liner {ldelim}
+	background:none;
+{rdelim}
+
+.yui-skin-sam .yui-dt td {ldelim}
+	background:none;
+{rdelim}
+
+.yui-skin-sam .yui-dt tr th {ldelim}
+    padding: 0px 0px 0px 0px !important;
+{rdelim}
+
+.yui-skin-sam .yui-dt table {ldelim}
+    border-collapse: collapse;
+{rdelim}
+
+.yui-skin-sam .yui-dt td.description div{ldelim}
+	text-align: left;
+	white-space: pre-line !important;
+	word-wrap: normal;
+{rdelim}
+
+.yui-skin-sam .yui-dt tr.colored  {ldelim} 
+	    background-color:#FDEAEA; 
+{rdelim} 
+
+.yui-skin-sam .yui-dt tr.no_pointer ,
+.yui-skin-sam .yui-dt tr.no_pointer td
+  {ldelim} 
+	    cursor: default !important; 
+{rdelim} 
+
+/* increase datatable width to 100% from the beginning */
+div#oqcUsersContainer table {ldelim} width:100%;{rdelim}
+</style> 

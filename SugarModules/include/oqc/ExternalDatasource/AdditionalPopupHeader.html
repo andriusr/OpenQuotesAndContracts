@@ -1,0 +1,36 @@
+{{* TODO Only do the following for selection of contacts *}}
+
+<link rel="stylesheet" type="text/css" href="include/oqc/ExternalDatasource/yuiautocomplete.css" />
+<script type='text/javascript' src='{sugar_getjspath file='include/oqc/ExternalDatasource/yuiautocomplete.js'}'></script>
+<script type='text/javascript' src='{sugar_getjspath file='include/oqc/ExternalDatasource/ExternalDatasource.js'}'></script>
+
+<style>
+#externalDatasoureAutocompleteLabel {ldelim}
+    color:#E76300;
+    font-weight:bold;
+{rdelim}
+.match  {ldelim}
+	font-weight: bold;
+{rdelim}
+</style>
+
+{{* The container container *}}
+<label id="externalDatasoureAutocompleteLabel" style="font-weight: bold;">Search External Source:</label>
+<table style="width: 40em; padding-bottom: 2em;" class="yui-skin-sam" >
+	<tr>
+		<td>
+		{{* put autocomplete into table because other containers (e.g., span, div) could not limit the width of the autocomplete field *}}
+			<div id="externalDatasoureAutocomplete">
+				<input id="autocompleteInput" type="text" />
+				<input id="hiddenId" type="hidden" />
+				<div id="autocompleteContainer" />
+			</div>
+		</td>
+	</tr>
+</table>
+
+<script type="text/javascript">
+	OqcExternalDatasource.init();
+</script>
+
+{{* TODO until here *}}

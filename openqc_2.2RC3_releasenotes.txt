@@ -1,0 +1,248 @@
+OpenQuotesAndContracts 2.2RC3 Release Notes
+===============================================
+New release adds Russian(ru_ru) language thanks to translation by Alexey Zimarev.
+
+Added features/improvements:
+
++ Added pdf creation debug mode. Can be switched on from admin panel. See updated manual for details.
++ Manual updated with pdf creation tools installation guides for MacOSX and CentOS.
++ Pre-filtering of Contacts popup list when Account field is filled with data, for Quotes and Contracts modules (contributed by Alexey Zimarev).
++ When creating quote from opportunity, the Account field is filled automatically (contributed by Alexey Zimarev). 
++ In External Contract module, contract number can be selected from popup.
++ Added Cost and Supplier fields in Products module.
+
+Bugfixes:
+
+- Product list items were not possible to enter with zero price.
+- Created pdf documents had Assigned To and Status fields empty.
+- Missing font error when creating pdf documents on CentOS. User should set CentOSpatch=1 in config file accessible from Admin panel.
+- Date_modified field was empty when creating pdf document.
+- ProductCatalog template improvement.
+- Fixed creation and translation of custom fields for Documents, Accounts and Contacts modules.
+
+
+
+OpenQuotesAndContracts 2.2RC2 Release Notes
+===============================================
+New release adds French(fr_FR), Spanish(es_ES) and Portugal (pt_BR) translations. Thanks to OQC contributors:
+Spanish translation by Eduardo Hernandez.
+French translation by Aurelien Mauricard.
+Portugese/Brasil translation by Jader Simoes.  
+
+Added features/improvements:
+
++ Three new languages- French, Spanish and Portugal.
++ Improved tinyMCE editor compatibility with rtl themes.
++ Images with width smaller than 700 pixels width are not resized in Products module.
+
+Bugfixes:
+
+- Some of strings were not possible to translate.
+- Audit in Quotes and Contracts modules stopped working in 2.2RC1.
+- The status field after clicking e-mail accept link is blank.
+
+
+
+OpenQuotesAndContracts 2.2RC1 Release Notes
+===============================================
+New release fixes some compatibility issues with SugarCE 6.5.9, plus number of other bugs. Number of new features and improvements - please see the list below.
+
+Added features/improvements:
+
++ Categories Tree in ProductCatalog uses dynatree with much improved drag-n-drop functionality.
++ Products are shown in ProductCatalog EditView and can be accessed for editing directly.
++ Using drag-n-drop one can assign/change Product category, catalog position and description when in ProductCatalog EditView.
++ Products now have single price field plus new recurring tag. Only products that are marked as recurring is possible to include in Recurring Expenses tables in Quotes and Contracts.
++ Products can be entered in several currencies (in older versions Products were entered in default currency only).
++ Product search in Product Popups are QuickSearch enabled. 
++ Product search in Product Popups does not return old product versions or full list of products instead of options only.
++ Updated German translation - many thanks to Bernd Dongus for help and valuable suggestions.
++ New Admin CleanUp tool for batch deletion of old versions of Products/Quotes/Contracts/ExternalContracts.
+
+
+Bugfixes:
+
+- Delete action is not available in ListViews on SugarCE 6.5.x instances.
+- Description fields that are html enabled using tinyMCE are not saved on Sugar 6.5.x instances.
+- Search in Quotes/Contracts/Additions ListView returns all versions instead of latest only.
+- Price fields in Listviews do not show currency symbols correctly.
+- Deleted records of Products/Quotes/Contracts are not hidden in History subpanel.
+- When user deletes latest version of Product/Quote/Contract, all older versions are not deleted and can be accessed.
+- ExternalContract DetailView is broken in 2.1RC2.
+- Products descriptions in pdf files are shown as plain text instead of rich text.
+
+Known issues/limitations:
+
+* Product and Textblocks modules are Import enabled. Other modules could not be imported properly using standard SugarCE tools. Please let us know if there is any interest in custom exporting/importing tools. Probably, the simpler workaround would be to use database manipulation software like phpMyAdmin to do export/import directly from/to database.
+
+
+
+OpenQuotesAndContracts 2.1RC2 Release Notes
+===============================================
+
+This is bugfix release, some of the bugs existed uncatched in earlier releases for a long time. It is recommended to upgrade to latest realease as soon as possible.
+
+Bugfixes:
+
+- Create Attachment and Upload Revision popups in non-Developer mode was rendered with wrong tempate and did not performed as expected.
+- Logic of TeamTask reminders date calculation was improved and reminders are not send after each TeamTask save.
+- TeamTask acceptance link in notification email did not function properly.
+- Special symbols in TeamTask comments column was dispalyed as html sequences.
+- Corrected ordering of TeamTask participants.
+- Corrected TeamTask auditing- now first version is not audited.
+- Corrected display of "NaN %" in VAT column in Packaged product table.
+
+Known issues:
+
+* Italian and German translation for new Teamtask module is not available. Can somebody help with translation?
+* Hovering in Products ListView on colored rows does not work out-of-the box. To make it work one has to edit  themes/Sugar5/css/style.css file.
+Find the section as below and add !important: 
+.evenListRowS1:hover td, 
+.oddListRowS1:hover td
+{background: #f6f6f6 !important;}
+The same correction should be applied for other themes (ModernAqua, for example).
+
+OpenQuotesAndContracts 2.1RC1 Release Notes
+===============================================
+
+New release adds possibility to edit configuration file from Administration screen, new TeamTask module that allows to assign task to several users, attachments versioning improvements and other small workflow/interface improvements. Details below.
+
+Added features/improvements:
+
++ New TeamTask module allows to assign the task to several users. The task can be completed when all users completes it, or when single user completes it. E-mail notifications on assignment and reminders when task is overdue can be configured.
++ New TeamTask dashlet to show current TeamTasks on Home page.
++ Team Tasks can be configured from Administration screen to have default participants that are included by default.
++ OQC configuration file now can be edited from Administration screen, so admin is not required to have access to file system.
++ Improved Attachments versioning- the revision of attachments associated with records stays the same even if Document version is updated.
++ Product Options now shows up in the Product Catalog tree.
++ Inactive Product records colored in pink in Products ListView.
++ In Quotes and Contract modules it is possible to re-arrange datatable rows by entering desired row number in the table.
++ Improvement of Quotes and Contract modules datatable formatting. Large area editors for name and description fields.
++ When adding standard products to Quotes or Contract datatables, the attachments with subcategory 'Technical description' are attached automatically.
++ Improved install/uninstall process- the files that were not removed by Sugar build-in ModuleInstaller now are removed automatically.
++ Quick Repair and Rebuild now is run after install automatically.
++ OQC 2.1 is tested to run on Bitnami+Amazon EC2 cloud. See chapter 3.4 in manual for installation instructions.
+
+Removed features:
+
+- Find Duplicates button in Products DetailView.
+
+Bugfixes:
+
+- The CreateAttachment pop-up window did not close in ExternalContracts EditView on some LAMP configurations.
+- Fixed incorrect first picture positioning in Product Catalog pdf file.
+- Products that were not included into ProductCatalog pdf file appeared in pricelist section anyway.
+- Error when generating Quotes/Contracts pdf file on some LAMP stacks.
+- Removed Deprecated warnings from Sugar log about datetime fields (not really a bug, but annoying).
+- After uninstall of OQC some relationships are not uninstalled properly and causes php error messages in the log.
+
+Known issues:
+
+* Italian and German translation for new Teamtask module is not available. Can somebody help with translation?
+* Hovering in Product ListView on colored records does not works out-of-the box. To make it work one has to edit  themes/Sugar5/css/style.css file.
+Find the section as below and add !important: 
+.evenListRowS1:hover td, 
+.oddListRowS1:hover td
+{background: #f6f6f6 !important;}
+The same correction should be applied for other themes (ModernAqua, for example).
+
+OpenQuotesAndContracts 2.0RC4 Release Notes
+===============================================
+
+This release is adds compatibility with SugarCE 6.4.x versions. 
+
+Interface/usability improvements:
+
+- AjaxUI for openqc modules is disabled by default during install; user no longer is required to disable modules manually.
+- Improved MassUpdate field settings for all modules.
+- Restored AssignedTo field default behavior for Quotes, Contracts and Additions.
+- Product images are saved to default upload directory; configure documents.properties file for different image directory.
+
+Bugfixes:
+
+- Fixes installation error on SugarCE 6.4.2 systems.
+- ExternalContracts Listview display "Array" in Contract Matter column.
+- In ProductCatalog EditView TinyMCE editors "crosstalk" when adding new category.
+
+After update to new version it is recommended to run Quick Repair and Rebuild in order to clean cache. Browser cache should be cleaned as well (use Ctrl+F5).
+
+OpenQuotesAndContracts 2.0RC3 Release Notes
+===============================================
+
+This realease improves compatibility of openqc with cloud based Sugar instances.
+
+Bugfixes:
+
+- Fixes installation error on SugarCE 6.4.2 systems.
+- AjaxUI for openqc modules is disabled by default during install; user no longer is required to disable modules manually.
+
+After update to new version it is recommended to run Quick Repair and Rebuild in order to clean js cache. Cleaning of browser cache is also recommended, otherwise the changes introduced in new version might not work as expected.
+
+OpenQuotesAndContracts 2.0RC2 Release Notes
+===============================================
+
+This is bug fix release.
+
+Bugfixes:
+
+- In Create Attachment Popup the Calendar rendering is fixed.
+- Italian language now works properly.
+- Removed dead links to Categories in Product ListView and DetailView.
+- Versioning of Additions improved/fixed.
+- Reduced number of "Base Implementa" dead links in Last Viewed bar.
+- Product links in YUI tables now opens in the same window.
+- Some UI rendering polishing.
+
+Notes:
+
+- Only SugarCE 6.x versions are supported. For work with 6.3 or 6.4 one has to disable AjaxUI for OQC modules. To do this edit config_override.php (it is located in root directory of SugarCE) and add entries:
+$sugar_config['addAjaxBannedModules']['0'] = 'oqc_TextBlock';
+$sugar_config['addAjaxBannedModules']['1'] = 'oqc_Offering';
+$sugar_config['addAjaxBannedModules']['2'] = 'oqc_Product';
+$sugar_config['addAjaxBannedModules']['3'] = 'oqc_Contract';
+$sugar_config['addAjaxBannedModules']['4'] = 'oqc_ExternalContract';
+$sugar_config['addAjaxBannedModules']['5'] = 'oqc_ProductCatalog'; 
+Do Quick Repair and Rebuild after modification of config_override.php.
+
+- After update to new version it is recommended to run Quick Repair and Rebuild in order to clean js cache. Cleaning of browser cache is also recommended, otherwise the changes introduced in new version might not work as expected. 
+
+OpenQuotesAndContracts 2.0 Beta Release Notes
+===============================================
+
+Number of new features are introduced in 2.0. Unfortunately, it is increasedly difficult to keep backwards compatibility of new version with old code. Below is the list of the main changes in OQC behavior. We hope these small inconveniences are compensated by the new features :-).
+
+Changelog:
+
+*** VAT is handled only in new format. It is no longer required to set it in config file. Older quotes and contracts created with 1.7.7 version or earlier may indicate and calculate VAT incorrectly. It will be required to correct/re-enter VAT value for these items.
+*** Old pdf creation templates are not compatible with new ones. The users will be required to convert old templates, using '<' and '>' as Smarty delimiters instead of '{{' and '}}'. New format results in much better readability of the code.
+*** The ones that used textbloks with Smarty code will be required to modify due new Smarty delimiter. See manual for details.
+*** New version is not tested with SugarCE 5.2. Only 6.x versions are supported. For work with 6.3 one has to disable AjaxUI for OQC modules (Goto to Admin-> Configure AjaxUI OR edit config_override.php to add entries like following: $sugar_config['addAjaxBannedModules']['0'] = 'oqc_Product'; and so on). Recommended to use 6.2.x together with PHP 5.3.x. Best rendering of user interface is observed when using Firefox or Opera.
+
+Known issues:
+
+*** In Create Attachment Popup the Calendar is loaded with some errors- the button icons are not shown (but buttons operate anyway).
+
+New features:
+
+*** Multiple product catalogs (prevents catalog growth to unmanageable size).
+*** Product catalog can be configured for different currencies, global discount/markup selection (for pdf creation only).
+*** Outdated Fck editor is replaced with TinyMCE that is included in SugarCE distribution.
+*** Updated Scriptacoulous to 1.9.0.
+*** Pdf creation inprovement, including
+            1. Ability to set template for pdf creation from Editview.
+            2. New html to latex convertor- written from scratch.
+            3. Change in latex template format for easier editing (old templates will need replacement of some symbol sequences).
+            4. Template creation manual for beginners.
+            5. Pdf creation also will work on WAMP stack (except Document converter, atm tested on WinXP only).
+*** Textblocks handling improvement - drag&drop re-ordering of FreeText textblock now is possible.
+*** Textblocks are processed with Smarty before including into pdf files- see chapter 5.6 in manual for details.
+*** New ProductOptions feature- "slave" products that can be included into quotes and contracts only together with "master" product.
+*** It is possible to hide Reccuring Expenses Table from EditView and DetailView by setting hideRecurringTable parameter in config ( e.g. document.properties) file.
+
+
+Bugfixes:
+
+*** Some unused code cleanup - as result distribution size is reduced by approx 50%.
+*** Formatting of YUI datatables are improved.
+*** For some LAMP configurations the description of product was transferred to the YUI datatable with errors.
+*** Textblock templates with some special symbols was not possible to include into Quotes and Contracts.

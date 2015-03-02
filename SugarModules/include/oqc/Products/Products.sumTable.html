@@ -1,0 +1,6 @@
+{if $withButtons}
+<input class="button" type="button" value="{$languageStrings.add}" name="button" onClick="OqcCommon.setModifiedFlag(); OqcProducts.selectProduct('unique');" /> 
+<input class="button" type="button" value="{$languageStrings.addRecurring}" name="button" onClick="OqcCommon.setModifiedFlag(); OqcProducts.selectProduct('recurring');" /> 
+{/if}
+
+<div id="sumTable"></div>

@@ -1,0 +1,28 @@
+<script type="text/javascript">
+var servicesInitialFilter = "{$initialFilter}";
+var encodedRequestData = {$encoded_request_data};
+var languageStrings = {$languageStringsJSON}; {* language strings for use within javascript code are transmitted in json encoded form *}
+var decimalSeparator = '{$decimalSeparator}';
+var thousandsSeparator = '{$thousandsSeparator}';
+var dateFormat = '{$dateFormat}';
+var moduleName = '{$moduleName}';
+
+{* translation for dropdown labels *}
+var dropdownLabelsUnit = {$dropdownLabelsUnitJSON};
+var dropdownLabelsUnitArray = OqcCommon.convertDropdownMenu(dropdownLabelsUnit);
+var dropdownLabelsRecurrence = {$dropdownLabelsRecurrenceJSON};
+var dropdownLabelsVat = {$dropdownLabelsVatJSON};
+var oqc_currency_rate = {$current_rate};
+var oqc_current_id = '{$current_id}';
+var currencyOptions = {ldelim}
+	prefix: '{$currencySymbol} ', 
+	decimalPlaces: 2,
+	decimalSeparator: '{$decimalSeparator}',
+	thousandsSeparator: '{$thousandsSeparator}'
+{rdelim};
+var numberOptions = {ldelim}
+	decimalPlaces: 2,
+	decimalSeparator: '{$decimalSeparator}',
+	thousandsSeparator: '{$thousandsSeparator}'
+{rdelim};
+</script>

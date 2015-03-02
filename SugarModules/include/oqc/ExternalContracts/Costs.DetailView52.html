@@ -1,0 +1,55 @@
+{if empty($costsArray)}
+-
+{else}
+{*{include file="include/oqc/ExternalContracts/Charts.html"}*}
+<script type="text/javascript" src="include/oqc/common/OQC.js"></script>
+<script type="text/javascript" src="include/oqc/common/OQCCalendar.js"></script>
+<script type="text/javascript" src="include/oqc/ExternalContracts/Costs52.js"></script>
+
+<div id="costsContainer" style="margin-top:10px;margin-bottom:10px;"></div>
+
+<script type="text/javascript">
+var startDateString = '{$startdate}';
+var endDateString = '{$enddate}';
+
+var readOnly = true;
+{foreach from=$costsArray item=cost}
+// {$cost.category}
+if (!OqcCommon.tagExists('costsTable_{$cost.category}')) {ldelim}
+	OqcExternalContractsCosts.createCostsTable(
+		'costsContainer',
+		'costsTable_{$cost.category}',
+		SUGAR.language.get('app_list_strings', 'externalcontractmatter_list').{$cost.category}, // translated version of category
+		[],
+		readOnly
+	);
+{rdelim}
+
+{foreach from=$cost.detailedCosts item=detailedCost}
+// insert detailed costs for this cost position into cache
+OqcExternalContractsCosts.cache.set(
+	'{$cost.category}{$cost.year}{$detailedCost.month}',
+	new OqcExternalContractsCosts.DetailedCost(
+		'{$detailedCost.id}',
+		'{sugar_currency_format var=$detailedCost.price round=true decimals=2}',
+		{$detailedCost.month}
+	)
+);
+{/foreach}
+
+OqcExternalContractsCosts.addCost(
+	'costsTable_{$cost.category}',
+	new OqcExternalContractsCosts.Cost(
+		'{$cost.id}',
+		'{$cost.category}',
+		'{$cost.description}',
+		'{sugar_currency_format var=$cost.price round=true decimals=2}',
+		'{$cost.paymentinterval}', // do not translate paymentinterval here because we need the original string to display detailed costs list correctly. the translation can be done when neccessary using SUGAR.language.get().
+		{$cost.year}
+	),
+	readOnly,
+	false
+);
+{/foreach}
+</script>
+{/if}

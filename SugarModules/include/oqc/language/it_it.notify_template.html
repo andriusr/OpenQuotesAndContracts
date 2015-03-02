@@ -1,0 +1,96 @@
+<!--
+/*********************************************************************************
+ * The contents of this file are subject to the SugarCRM Enterprise Subscription
+ * Agreement ("License") which can be viewed at
+ * http://www.sugarcrm.com/crm/products/sugar-enterprise-eula.html
+ * By installing or using this file, You have unconditionally agreed to the
+ * terms and conditions of the License, and You may not use this file except in
+ * compliance with the License.  Under the terms of the license, You shall not,
+ * among other things: 1) sublicense, resell, rent, lease, redistribute, assign
+ * or otherwise transfer Your rights to the Software, and 2) use the Software
+ * for timesharing or service bureau purposes such as hosting the Software for
+ * commercial gain and/or for the benefit of a third party.  Use of the Software
+ * may be subject to applicable fees and any use of the Software without first
+ * paying applicable fees is strictly prohibited.  You do not have the right to
+ * remove SugarCRM copyrights from the source code or user interface.
+ *
+ * All copies of the Covered Code must include on each user interface screen:
+ *  (i) the "Powered by SugarCRM" logo and
+ *  (ii) the SugarCRM copyright notice
+ * in the same form as they appear in the distribution.  See full license for
+ * requirements.
+ *
+ * Your Warranty, Limitations of liability and Indemnity are expressly stated
+ * in the License.  Please refer to the License for the specific language
+ * governing these rights and limitations under the License.  Portions created
+ * by SugarCRM are Copyright (C) 2004-2011 SugarCRM, Inc.; All Rights Reserved.
+ ********************************************************************************/
+-->
+
+
+<!-- BEGIN: oqc_Task_new_Subject -->
+New SugarCRM TeamTask - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_new_Subject -->
+<!-- BEGIN: oqc_Task_new -->
+{ASSIGNER} has assigned a TeamTask to {ASSIGNED_USER}.
+The TeamTask will be completed when {TASK_TYPE} will review and complete it.
+Subject: {TASK_SUBJECT}
+Priority: {TASK_PRIORITY}
+Due Date: {TASK_DUEDATE}
+Status: {TASK_STATUS}
+Description: {TASK_DESCRIPTION}
+Confirm receipt of this TeamTask:
+<{ACCEPT_URL}&accept_status=accept>
+You may review this TeamTask at:
+<{URL}>
+<!-- END: oqc_Task_new -->
+
+<!-- BEGIN: oqc_Task_delete_Subject -->
+Deleted SugarCRM TeamTask - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_delete_Subject -->
+<!-- BEGIN: oqc_Task_delete -->
+{ASSIGNER} has deleted a TeamTask to {ASSIGNED_USER}.
+
+Subject: {TASK_SUBJECT}
+Priority: {TASK_PRIORITY}
+Due Date: {TASK_DUEDATE}
+Status: {TASK_STATUS}
+Description: {TASK_DESCRIPTION}
+
+You may review this TeamTask at:
+<{URL}>
+<!-- END: oqc_Task_delete -->
+
+<!-- BEGIN: oqc_Task_completed_Subject -->
+Completed SugarCRM TeamTask - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_completed_Subject -->
+<!-- BEGIN: oqc_Task_completed -->
+{ASSIGNER}: The TeamTask {TASK_ID} is completed!
+
+Subject: {TASK_SUBJECT}
+Priority: {TASK_PRIORITY}
+Due Date: {TASK_DUEDATE}
+Status: {TASK_STATUS}
+Description: {TASK_DESCRIPTION}
+
+You may review this TeamTask at:
+<{URL}>
+<!-- END: oqc_Task_completed -->
+
+<!-- BEGIN: oqc_Task_overdue_Subject -->
+Overdue SugarCRM TeamTask - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_overdue_Subject -->
+<!-- BEGIN: oqc_Task_overdue -->
+{ASSIGNER}: The TeamTask {TASK_ID} is overdue!
+Please review it as soon as possible!
+
+Subject: {TASK_SUBJECT}
+Priority: {TASK_PRIORITY}
+Due Date: {TASK_DUEDATE}
+Status: {TASK_STATUS}
+Description: {TASK_DESCRIPTION}
+
+You may review this TeamTask at:
+<{URL}>
+<!-- END: oqc_Task_overdue -->
+

@@ -1,0 +1,30 @@
+{if !$nextRevisions}
+
+-
+
+{else}
+
+<table class="list view" cellspacing="0px" cellpadding="0px" width="100%" border="0px">
+<tbody>
+<tr>
+	<th scope="row" width="10%">{$LBL_VERSION}</th>
+	<th scope="row" width="40%">{$LBL_NAME}</th>
+	{if $moduleName != 'oqc_Product'}<th scope="row" width="15%">{$LBL_STATUS}</th>{/if}
+	<th scope="row" width="15%">{$LBL_DATE_MODIFIED}</th>
+	<th scope="row" width="20%">{$LBL_MODIFIED}</th>
+</tr>
+
+{foreach from=$nextRevisions item=nextRevision}
+<tr height="20px">
+	<td valign="top"><a href="index.php?module={$moduleName}&action=DetailView&record={$nextRevision.id}">{$nextRevision.version}</a></td>
+	<td valign="top"><a href="index.php?module={$moduleName}&action=DetailView&record={$nextRevision.id}">{$nextRevision.name}</a></td>
+	{if $moduleName != 'oqc_Product'}<td valign="top">{$nextRevision.status}</td>{/if}
+	<td valign="top">{$nextRevision.date_modified}</td>
+	<td valign="top">{$nextRevision.modified_by_name}</td>
+</tr>
+{/foreach}
+
+</tbody>
+</table>
+
+{/if} 

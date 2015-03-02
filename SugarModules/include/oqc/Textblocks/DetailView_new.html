@@ -1,0 +1,21 @@
+<script type="text/javascript" src="include/oqc/tinymce/tiny_mce.js"></script> 
+
+<textarea id="description" name="description" cols="50">
+{$textblock|from_html}	
+
+</textarea>
+
+<script type="text/javascript">
+tinyMCE.init({ldelim}
+        mode : "exact",
+        elements: "description",
+        theme : "advanced",
+        content_css : "include/oqc/tinymce/custom_content.css",
+        width : "580",
+        readonly: 1,
+        directionality : "{$directionality}",
+        plugins : "directionality"
+{rdelim});
+</script>
+
+

@@ -1,0 +1,37 @@
+{include file="include/oqc/Task/css.html"}
+
+<script type="text/javascript">
+
+{$OQC_DATA}
+
+{* var isAdmin = {$isAdmin} ; indicates whether user is allowed to add/delete users into table; only creted_by and default users are allowed to do this *}
+var languageStrings = OQC_DATA.languageStrings; {* language strings for use within javascript code are transmitted in json encoded form; uses oqc_Task strings *}
+var oqc_USER_DATA = OQC_DATA.task_data;
+
+{* translation for dropdown labels used in YUI table *}
+var dropdownLabelsProgress = {$dropdownLabelsProgressJSON};
+var dropdownLabelsProgressArray = OqcCommon.convertDropdownMenu(dropdownLabelsProgress);
+var dropdownLabelsResolution = {$dropdownLabelsResolutionJSON} ;
+var dropdownLabelsResolutionArray = OqcCommon.convertDropdownMenu(dropdownLabelsResolution);
+var dropdownLabelsAccepted = {$dropdownLabelsAcceptedJSON};
+var dropdownLabelsAcceptedArray = OqcCommon.convertDropdownMenu(dropdownLabelsAccepted);
+var oqcYUIMessages = {$oqcYUIMessages};
+
+</script>
+
+<input type="hidden" id="oqcUsersJsonString" name="oqcUsersJsonString" value='' />
+{if $isDone}
+<h3>{$MOD.LBL_DONE_MESSAGE}</h3><br>
+{/if}
+{* datatable containers have to be in a container with class="yui-skin-sam" unless images are not loaded!! *}
+<span class="yui-skin-sam">
+<div id='oqcUsersContainer' style="margin-bottom: 10px;"></div> 
+</span>
+
+<script type="text/javascript">
+var oqcUsersDataTable;
+
+OqcTask.initUsersTable(true, false);
+
+
+</script>

@@ -1,0 +1,28 @@
+{if empty($positionsArray)}
+-
+{else}
+<script type="text/javascript" src="include/oqc/common/OQC.js"></script>
+<script type="text/javascript" src="include/oqc/ExternalContracts/Positions.js"></script>
+
+<div id="positionsContainer" style="margin-top:10px;margin-bottom:10px;"></div>
+
+<script type="text/javascript">
+var readOnly = true; 
+OqcExternalContractsPositions.createPositionsTable('positionsContainer', OqcExternalContractsPositions.defaultPositionTableName, [], readOnly);
+{foreach from=$positionsArray item=position}
+OqcExternalContractsPositions.addPosition(
+	OqcExternalContractsPositions.defaultPositionTableName,
+	new OqcExternalContractsPositions.Position(
+		'{$position.id}',
+		'{$position.name}', 
+		'{$position.quantity}',
+		'{sugar_currency_format var=$position.price round=true decimals=2}',
+		'{$position.description}',
+		SUGAR.language.get('app_list_strings', 'externalcontractmatter_list').{$position.type}
+	),
+	readOnly
+);
+{/foreach}
+OqcCommon.toggleTableDisplaying(OqcExternalContractsPositions.defaultPositionTableName);
+</script>
+{/if}

@@ -1,0 +1,28 @@
+<link rel="stylesheet" type="text/css" href="include/oqc/Services/yuiBuild/fonts/fonts-min.css" />
+<link rel="stylesheet" type="text/css" href="include/oqc/Services/yuiBuild/assets/skins/sam/calendar.css" />
+<link rel="stylesheet" type="text/css" href="include/oqc/Services/yuiBuild/assets/skins/sam/datatable.css" />
+<link rel="stylesheet" type="text/css" href="include/oqc/Services/yuiBuild/assets/skins/sam/button.css" />
+<link rel="stylesheet" type="text/css" href="include/oqc/Services/yuiBuild/assets/skins/sam/menu.css" />
+
+{*
+	to be able to align some cell content on the right side of the colums (like prices, quantities, sums) we create another style 'align-right'.
+	during datatable initialisation we apply the style to the colums using the className: 'align-right' attribute.
+	for more information see http://www.satyam.com.ar/yui/widgetstyles.html
+*}
+<style type="text/css">
+.yui-skin-sam .yui-dt td.align-right {ldelim}
+	text-align: right;
+{rdelim}
+
+.yui-dt th .yui-dt-liner {ldelim}
+	background:none;
+{rdelim}
+
+.yui-skin-sam .yui-dt td {ldelim}
+	background:none;
+{rdelim}
+
+/* increase datatable width to 100% from the beginning */
+div#uniqueContainer table {ldelim} margin-top: 5px; margin-bottom: 5px; width:100%;{rdelim}
+div#sumTable table {ldelim} margin-top: 5px; {rdelim}
+</style>

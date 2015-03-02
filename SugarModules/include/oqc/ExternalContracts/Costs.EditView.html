@@ -1,0 +1,78 @@
+<script type="text/javascript" src="include/oqc/common/Set.js"></script>
+<script type="text/javascript" src="include/oqc/common/Map.js"></script>
+<script type="text/javascript" src="include/oqc/common/OQC.js"></script>
+<script type="text/javascript" src="include/oqc/common/OQCCalendar.js"></script>
+<script type="text/javascript" src="include/oqc/ExternalContracts/Costs.js"></script>
+
+<table id="infinityHint" style="background-color: ffffe0; border: 1px solid gray; padding: 5px; font-size: 120%;" width="500px">
+	<tr>
+		<td>
+			{$infinityHint}
+		</td>
+	</tr>
+</table>
+
+<div id="costsContainer" style="margin-top:10px;margin-bottom:10px;"></div>
+
+<script type="text/javascript">
+var readOnly = false;
+
+{foreach from=$costsArray item=cost}
+// fill the costs cache
+OqcExternalContractsCosts.cache.set(
+	'{$cost.category}{$cost.year}',
+	new OqcExternalContractsCosts.Cost(
+		'{$cost.id}',
+		'{$cost.category}',
+		'{$cost.description}',
+		{if $cost.price} {$cost.price}, {else} 0, {/if}
+		'{$cost.paymentinterval}',
+		{$cost.year}
+	)
+);
+
+{foreach from=$cost.detailedCosts item=detailedCost}
+// insert detailed costs for this cost position into cache
+OqcExternalContractsCosts.cache.set(
+	'{$cost.category}{$cost.year}{$detailedCost.month}',
+	new OqcExternalContractsCosts.DetailedCost(
+		'{$detailedCost.id}',
+		{$detailedCost.price},
+		{$detailedCost.month}
+	)
+);
+{/foreach}
+
+// create table if neccessary
+if (!OqcCommon.tagExists('costsTable_{$cost.category}')) {ldelim}
+	OqcExternalContractsCosts.createCostsTable(
+		'costsContainer',
+		'costsTable_{$cost.category}',
+		SUGAR.language.get('app_list_strings', 'externalcontractmatter_list').{$cost.category}, // translated version of category
+		[],
+		readOnly
+	);
+{rdelim}
+
+// add cost row
+OqcExternalContractsCosts.addCost(
+	'costsTable_{$cost.category}',
+	new OqcExternalContractsCosts.Cost(
+		'{$cost.id}',
+		'{$cost.category}',
+		'{$cost.description}',
+		{if $cost.price} {$cost.price}, {else} 0, {/if}
+		'{$cost.paymentinterval}',
+		{$cost.year}
+	),
+	readOnly,
+	false
+);
+{/foreach}
+
+// Execute updateCostsTables and hideDateSelectionFields method when last input field is available/rendered
+YAHOO.util.Event.onAvailable('numberofdocumentationcopies', OqcExternalContractsCosts.updateCostsTables);
+YAHOO.util.Event.onAvailable('numberofdocumentationcopies', OqcExternalContractsCosts.hideDateSelectionFields);
+YAHOO.util.Event.onAvailable('numberofdocumentationcopies', OqcExternalContractsCosts.callAddAutoCompletionToAllFieldsDeferred);
+YAHOO.util.Event.onAvailable('numberofdocumentationcopies', OqcExternalContractsCosts.startDateChecking);
+</script>

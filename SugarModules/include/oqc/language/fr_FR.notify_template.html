@@ -1,0 +1,108 @@
+<!--
+/*********************************************************************************
+ * SugarCRM Community Edition is a customer relationship management program developed by
+ * SugarCRM, Inc. Copyright (C) 2004-2011 SugarCRM Inc.
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Affero General Public License version 3 as published by the
+ * Free Software Foundation with the addition of the following permission added
+ * to Section 15 as permitted in Section 7(a): FOR ANY PART OF THE COVERED WORK
+ * IN WHICH THE COPYRIGHT IS OWNED BY SUGARCRM, SUGARCRM DISCLAIMS THE WARRANTY
+ * OF NON INFRINGEMENT OF THIRD PARTY RIGHTS.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License along with
+ * this program; if not, see http://www.gnu.org/licenses or write to the Free
+ * Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ * 02110-1301 USA.
+ * 
+ * You can contact SugarCRM, Inc. headquarters at 10050 North Wolfe Road,
+ * SW2-130, Cupertino, CA 95014, USA. or at email address contact@sugarcrm.com.
+ * 
+ * The interactive user interfaces in modified source and object code versions
+ * of this program must display Appropriate Legal Notices, as required under
+ * Section 5 of the GNU Affero General Public License version 3.
+ * 
+ * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
+ * these Appropriate Legal Notices must retain the display of the "Powered by
+ * SugarCRM" logo. If the display of the logo is not reasonably feasible for
+ * technical reasons, the Appropriate Legal Notices must display the words
+ * "Powered by SugarCRM".
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ ********************************************************************************/
+-->
+
+<!-- BEGIN: oqc_Task_new_Subject -->
+Nouveau Projet SugarCRM - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_new_Subject -->
+<!-- BEGIN: oqc_Task_new -->
+{ASSIGNER} a assigné un Projet ą {ASSIGNED_USER}.
+Le Projet sera terminé quand {TASK_TYPE} sera examiné et terminé.
+Sujet: {TASK_SUBJECT}
+Priorité: {TASK_PRIORITY}
+Date d'échéance: {TASK_DUEDATE}
+Statut: {TASK_STATUS}
+Description: {TASK_DESCRIPTION}
+Confirmer la réception de Projet:
+<{ACCEPT_URL}&accept_status=accepted>
+Vous pouvez consulter ce Projet ici:
+<{URL}>
+<!-- END: oqc_Task_new -->
+
+<!-- BEGIN: oqc_Task_delete_Subject -->
+Suppression d'un Projet SugarCRM - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_delete_Subject -->
+<!-- BEGIN: oqc_Task_delete -->
+{ASSIGNER} a effacé un Projet de {ASSIGNED_USER}.
+
+Sujet: {TASK_SUBJECT}
+Priorité: {TASK_PRIORITY}
+Date d'échéance: {TASK_DUEDATE}
+Statut {TASK_STATUS}
+Description: {TASK_DESCRIPTION}
+
+Vous pouvez consulter ce Projet ici:
+<{URL}>
+<!-- END: oqc_Task_delete -->
+
+<!-- BEGIN: oqc_Task_completed_Subject -->
+Projet SugarCRM terminé - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_completed_Subject -->
+<!-- BEGIN: oqc_Task_completed -->
+{ASSIGNER}: Le Projet {TASK_ID} est terminé!
+
+Sujet: {TASK_SUBJECT}
+Priorité: {TASK_PRIORITY}
+Date d'échéance: {TASK_DUEDATE}
+Statut: {TASK_STATUS}
+Description: {TASK_DESCRIPTION}
+
+Vous pouvez consulter ce Projet ici:
+<{URL}>
+<!-- END: oqc_Task_completed -->
+
+<!-- BEGIN: oqc_Task_overdue_Subject -->
+Retard sur un Projet SugarCRM - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_overdue_Subject -->
+<!-- BEGIN: oqc_Task_overdue -->
+{ASSIGNER}: Le Projet {TASK_ID} est en retard!
+Veuillez le consulter dčs que possible!
+
+Sujet: {TASK_SUBJECT}
+Priorité: {TASK_PRIORITY}
+Date d'échéance: {TASK_DUEDATE}
+Statut: {TASK_STATUS}
+Description: {TASK_DESCRIPTION}
+
+Vous pouvez consulter ce Projet ici:
+<{URL}>
+<!-- END: oqc_Task_overdue -->
+
+

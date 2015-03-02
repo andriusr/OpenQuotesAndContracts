@@ -1,0 +1,97 @@
+<script src="include/oqc/dynatree/jquery/jquery.min.js" type="text/javascript"></script>
+<script src="include/oqc/dynatree/jquery/jquery-ui.custom.min.js" type="text/javascript"></script>
+<script src="include/oqc/dynatree/jquery/jquery.cookie.js" type="text/javascript"></script>
+
+<link href="include/oqc/dynatree/src/skin/ui.dynatree.css" rel="stylesheet" type="text/css" id="skinSheet">
+<script src="include/oqc/dynatree/src/jquery.dynatree.min.js" type="text/javascript"></script>
+
+{* <script type="text/javascript" src="include/oqc/common/Category.js" ></script> *}
+<script type="text/javascript" src="include/oqc/common/OQC.js" ></script>
+<script type="text/javascript" src="include/oqc/ProductCatalog/ProductCatalog.js" ></script>
+
+<span id="categoryHiddenFieldContainer">
+<input type="hidden" id="categoryHiddenField" name="categoryHiddenField" value="" />
+<input type="hidden" id="deletedCategories" name="deletedCategories" value="" />
+
+</span>
+<table width="100%" style="border: 1px; background-color: none; margin-bottom: 20px;">
+	 <tr valign="top" ><td style="padding:0px 0px 10px 0px !important;">{$MOD.LBL_TREE_EDITING_HINT}</td></tr>
+    <tr valign="top">
+        <td>
+        <input class="button" id="oqc_toggleExpand" type="button" value="{$MOD.LBL_EXPAND_ALL}" name="expand" onClick="OqcCatalog.expandAll('#categoryTreeContainer');" />
+        </td>
+    </tr>
+</table>
+
+<div style="margin-bottom: 10px;" id="categoryTreeContainer"></div>
+
+
+<table width="100%" style="border: 1px; background-color: none; margin-bottom: 25px;">
+
+    <tr valign="top">
+        <td>
+        <input class="button" type="button" value="{$MOD.LBL_ADD_NODE}" name="button" onClick="OqcCatalog.addNode('#categoryTreeContainer', OqcCommon.getRandomString());" />
+        <input class="button" type="button" value="{$MOD.LBL_DELETE_NODE}" name="button" onClick="OqcCatalog.deleteNode('#categoryTreeContainer');" />
+        </td>
+    </tr>
+</table>
+
+<p style="width:100%;">	
+	<div id="categoryDescription"> 
+	</div>
+</p>
+
+<script type="text/javascript">
+	
+tinyMCE.init({ldelim}
+        mode : "exact",
+        elements: "categoryDescription",
+        theme : "advanced",
+        element_format : "html",
+        content_css : "include/oqc/tinymce/custom_content.css",
+        inline_styles : false,
+        width : "580",
+        language : "{$lang}",
+        directionality : "{$directionality}",
+        setup : function(ed) {ldelim}
+          ed.onMouseUp.add(function(ed, l) {ldelim}
+                  OqcCatalog.storeCategoryDescription('#categoryTreeContainer');
+          {rdelim});
+          ed.onKeyUp.add(function(ed, l) {ldelim}
+                  OqcCatalog.storeCategoryDescription('#categoryTreeContainer');
+          {rdelim});
+          ed.onUndo.add(function(ed, l) {ldelim}
+                  OqcCatalog.storeCategoryDescription('#categoryTreeContainer');
+          {rdelim});
+           ed.onChange.add(function(ed, l) {ldelim}
+                  OqcCatalog.storeCategoryDescription('#categoryTreeContainer');
+          {rdelim});
+   		{rdelim},
+
+
+
+       plugins : "emotions,iespell,inlinepopups,insertdatetime,searchreplace,paste,fullscreen,nonbreaking,directionality",
+        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,sub,sup,bullist,numlist,outdent,indent,blockquote,formatselect,|,charmap,hr,nonbreaking,|,fullscreen,help",
+		theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,undo,redo,|,cleanup,removeformat,code,iespell,|,insertdate,inserttime,ltr,rtl",
+		theme_advanced_buttons3 : "",
+		theme_advanced_toolbar_location : "top",
+		theme_advanced_toolbar_align : "left",
+		theme_advanced_statusbar_location : "bottom",
+		theme_advanced_resizing : true
+		
+{rdelim});			
+</script>
+
+
+<script type="text/javascript">
+
+// supress sugarcrms autosave mechanism: if the user enters the category name and presses the return key, the product catalog should not be saved
+OqcCommon.disableAutoSaveOnHittingReturnKey();
+var languageStrings = {$languageStrings};
+var treeData = {$categoryJSONData}
+
+YAHOO.util.Event.onDOMReady( function() {ldelim}
+	 OqcCatalog.initTree('#categoryTreeContainer', treeData, false); 
+{rdelim});
+
+</script>

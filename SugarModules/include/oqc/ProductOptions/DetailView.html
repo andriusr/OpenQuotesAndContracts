@@ -1,0 +1,35 @@
+{ if empty($productOptions) } 
+
+-
+
+{ else }
+
+<table class="view list" cellspacing="0px" cellpadding="0px" width="100%" border="0px" >
+
+<tr height="20">
+	<th scope="row">{$LBL_NAME}</th>
+	<th scope="row">{$LBL_VERSION}</th>
+	<th scope="row">{$LBL_STATUS}</th>
+	<th scope="row">{$LBL_PRICE}</th>
+	<th scope="row">{$LBL_IS_RECURRING_SHORT}</th>
+	<th scope="row">{$LBL_DATE_MODIFIED}</th>
+	<th scope="row">{$LBL_MODIFIED}</th>
+</tr>
+
+{foreach from=$productOptions item=productOption}
+<tr height="20" class="evenListRowS1">
+	<td  valign="top">{if !empty($productOption.option_url)}<a href="{$productOption.option_url}">{/if}{$productOption.name}{if !empty($productOption.option_url)}</a>{/if}</td>
+	<td  valign="top">{if !empty($productOption.option_url)}<a href="{$productOption.option_url}">{/if}{$productOption.version}{if !empty($productOption.option_url)}</a>{/if}</td>
+	<td valign="top">{$productOption.status}</td>
+	<td valign="top">{$currencySymbol} {sugar_currency_format var=$productOption.price round=true decimals=2 currency_symbol=false}</td>
+	<td valign="top"><input class"checkbox" type="checkbox" disabled="true" {if $productOption.is_recurring} checked="" {/if}</td>
+	<td  valign="top">{$productOption.date_modified}</td>
+	<td  valign="top">{$productOption.modified_by_name}</td>
+</tr>
+{/foreach}
+
+
+</table>
+
+
+{/if}

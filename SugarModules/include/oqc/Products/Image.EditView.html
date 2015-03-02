@@ -1,0 +1,14 @@
+{if $image_url}
+<p>
+	<b>{$languageStrings.currentImage}</b><br />
+        <input type="button" class="button" value="{$languageStrings.delete}" onclick="OqcProducts.deleteProductImage('productImage', 'image_deleted');" />
+        <input type="hidden" id="image_deleted" name="image_deleted" value="0" /> <br />
+        <img id="productImage" style="margin-top: 10px;" src="{$image_url}" alt="-" />
+</p>
+{/if}
+<p style="margin-top: 10px;">
+	<b>{$languageStrings.selectImage}</b><br />
+	<p>{$languageStrings.imageHint} </p>
+	{* It is important to set the modified flag when the input field is clicked to make sure the product will be saved. *}
+	<input type="file" size="60" name="select_image_filename" value="Select Image" onclick="OqcCommon.setModifiedFlag();" />
+</p>

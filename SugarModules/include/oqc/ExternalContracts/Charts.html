@@ -1,0 +1,10 @@
+<script type="text/javascript">
+var productCatalogId = '{$externalContractId}';
+var languageStringsCommon = {$languageStringsCommon};
+document.write('<input id="showReportsButton" type="button" class="button" onClick="getExpenses(\'{$getExpensesUrl}\'); getExpensesOfExternalContractsPerYear(\'{$expensesExternalContractsUrl}\');" value="' + languageStringsCommon['showReports'] + '" />');
+</script>
+<div id="waitingGifContainer"></div>
+
+{include file="include/oqc/Charts/Charts.html" numberOfCharts=2}
+
+<script type="text/javascript" src="include/oqc/ExternalContracts/Charts.js"></script>

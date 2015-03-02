@@ -1,0 +1,16 @@
+{include file="include/oqc/Products/css.html"}
+{include file="include/oqc/Products/javascriptSettingVariables.html"}
+
+{* this is set to true if at least one field has been modified  *}
+<input type="hidden" id="isModified" name="isModified" value="false" />
+<input type="hidden" id="uniqueJsonString" name="uniqueJsonString" value='' />
+
+<input size="2" type="hidden" id="tax" value="{$vat*100}" readonly="readonly" style="text-align: right; border:0px; background-color: transparent; font-weight: bold;" /> 
+
+{* datatable containers have to be in a container with class="yui-skin-sam" unless images are not loaded!! *}
+<span class="yui-skin-sam">
+<div id='uniqueContainer'></div> {* container of datatable has to be a div! *}
+{include file="include/oqc/Products/Products.sumTable.html" withButtons=1}
+</span>
+{$currencyJavascript} 
+{include file="include/oqc/Products/javascriptInitialisation.html" readOnly='false'}

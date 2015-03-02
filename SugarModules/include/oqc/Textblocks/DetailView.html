@@ -1,0 +1,38 @@
+<script type="text/javascript" src="include/oqc/tinymce/tiny_mce.js"></script>
+<script type="text/javascript" src="include/oqc/common/Set.js"></script>
+<script type="text/javascript" src="include/oqc/common/Map.js"></script>
+<script type="text/javascript" src="include/oqc/Textblocks/TextblocksList.js"></script>
+
+
+{if empty($textblocks)}
+-
+{else}
+
+<span id="textblockIdContainer">
+<div id="textblocksContainer">
+
+<script type="text/javascript">
+
+var languageStringsTextblocks = {$languageStringsTextblocks};
+
+ tinyMCE.init({ldelim}
+        mode : "none",
+        theme : "advanced",
+        content_css : "include/oqc/tinymce/custom_content.css",
+        width : "580",
+        readonly: 1,
+        directionality : "{$directionality}",
+        plugins : "directionality"
+{rdelim});		
+
+{foreach from=$textblocks item=textblock}
+{if $textblock.description !== ''}
+	addReadOnlyTextblock(new Textblock('{$textblock.id}','{$textblock.name}','{$textblock.description|from_html|escape:javascript}', '{$textblock.textblock_id}'));
+{/if}
+{/foreach}
+
+
+</script>
+</div></span>
+
+{/if}

@@ -1,0 +1,18 @@
+{include file="include/oqc/Services/css.html"}
+{include file="include/oqc/Services/javascriptSettingVariables.html"}
+
+<input type="hidden" id="uniqueJsonString" name="uniqueJsonString" value='' />
+<input type="hidden" id="recurringJsonString" name="recurringJsonString"  value='' />
+
+{* in detail view tax still has to be displayed within an input field to make sure it can be referenced in javascript code to calculate sums *}
+
+<p>{$languageStrings.vat_default} <input size="3" type="text" id="tax" value="{$vat_default*100}" readonly="readonly" style="text-align: right; border:0px; background-color: transparent; font-weight: bold;" /> %
+</p>
+
+{* datatable containers have to be in a container with class="yui-skin-sam" unless images are not loaded!! *}
+<span class="yui-skin-sam">
+{include file="include/oqc/Services/Container.html" prefix='unique'  readOnly='true' hidden=0}
+{include file="include/oqc/Services/Container.html" prefix='recurring' readOnly='true' hidden=$hideContainer}
+</span>
+
+{include file="include/oqc/Services/javascriptInitialisation.html" readOnly='true'}

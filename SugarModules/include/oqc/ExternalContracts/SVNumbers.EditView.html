@@ -1,0 +1,34 @@
+{$sqsJavaScript}
+<script type="text/javascript" src="include/oqc/ExternalContracts/SVNumbers.js"></script>
+<script type="text/javascript" src="include/oqc/common/OQC.js"></script>
+
+
+<div id="svnumbersContainer" style="margin-top:10px;margin-bottom:10px;"></div>
+
+{* this is set to true if at least one field has been modified  *}
+<input type="hidden" id="isModified" name="isModified" value="false" />
+
+<script type="text/javascript">
+function popupCallback(tagId,a) {ldelim}
+	// if a not empty and contract field exists
+	if (a && '' != a && OqcCommon.tagExists(tagId)) {ldelim}
+		// set contract field value to a
+		document.getElementById(tagId).value = a;
+	{rdelim}
+{rdelim}
+
+var sugarDateFormat = '{$sugarDateFormat}'; 
+var sugarDecimalSeperator = '{$sugarDecimalSeperator}';
+var languageStringsCommon = {$languageStringsCommon};
+
+document.write('<input class="button" type="button" onClick="OqcExternalContractsSVNumbers.addSVNumber(OqcExternalContractsSVNumbers.defaultSVNumberTableName, new OqcExternalContractsSVNumbers.SVNumber(OqcCommon.getRandomString(), \'\'), false); OqcCommon.toggleTableDisplaying(OqcExternalContractsSVNumbers.defaultSVNumberTableName); OqcCommon.setModifiedFlag();" value="' + SUGAR.language.get('oqc_ExternalContract', 'LBL_ADD_SVNUMBER') + '" style="margin-bottom: 10px;" />');
+
+var readOnly = false;
+OqcExternalContractsSVNumbers.createSVNumbersTable('svnumbersContainer', OqcExternalContractsSVNumbers.defaultSVNumberTableName, [], readOnly);
+{foreach from=$svnumbersArray item=svnumber}
+{if not empty($svnumber.name)}
+OqcExternalContractsSVNumbers.addSVNumber(OqcExternalContractsSVNumbers.defaultSVNumberTableName, new OqcExternalContractsSVNumbers.SVNumber('{$svnumber.id}', '{$svnumber.name}'), readOnly);
+{/if}
+{/foreach}
+OqcCommon.toggleTableDisplaying(OqcExternalContractsSVNumbers.defaultSVNumberTableName);
+</script>

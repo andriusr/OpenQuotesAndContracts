@@ -1,0 +1,28 @@
+<script type="text/javascript" src="include/oqc/common/Set.js"></script>
+<script type="text/javascript" src="include/oqc/common/Map.js"></script>
+<script type="text/javascript" src="include/oqc/common/OQC.js"></script>
+<script type="text/javascript" src="include/oqc/ExternalContracts/SVNumbers.js"></script>
+
+<div id="svnumbersContainer" style="margin-top:10px;margin-bottom:10px;"></div>
+
+<script type="text/javascript">
+var sugarDecimalSeperator = '{$sugarDecimalSeperator}';
+{* TODO simplify: insert all language strings not just common / documents * }
+var languageStringsCommon = {$languageStringsCommon};
+
+var readOnly = true;
+OqcExternalContractsSVNumbers.createSVNumbersTable('svnumbersContainer', OqcExternalContractsSVNumbers.defaultSVNumberTableName, [], readOnly);
+{foreach from=$svnumbersArray item=svnumber}
+{if not empty($svnumber.name)}
+OqcExternalContractsSVNumbers.addSVNumber(OqcExternalContractsSVNumbers.defaultSVNumberTableName, new OqcExternalContractsSVNumbers.SVNumber('{$svnumber.id}', '{$svnumber.name}'), readOnly);
+{/if}
+{/foreach}
+OqcCommon.toggleTableDisplaying(OqcExternalContractsSVNumbers.defaultSVNumberTableName);
+
+// compare this with oqc_ExternalContract::fill_in_additional_detail_fields()
+// TODO insert URL differently. at this time the fields are already modified for the view
+YAHOO.util.Event.onAvailable('quoteFileExistance', OqcExternalContractsDocuments.checkExistanceFor, {ldelim} name: 'quote', id: '{$id}' {rdelim});
+YAHOO.util.Event.onAvailable('contractFileExistance', OqcExternalContractsDocuments.checkExistanceFor, {ldelim} name: 'contract',id: '{$id}' {rdelim});
+YAHOO.util.Event.onAvailable('specialpropertiesFileExistance', OqcExternalContractsDocuments.checkExistanceFor, {ldelim} name: 'specialproperties',id: '{$id}' {rdelim});
+YAHOO.util.Event.onAvailable('service_descriptionFileExistance', OqcExternalContractsDocuments.checkExistanceFor, {ldelim} name: 'service_description',id: '{$id}' {rdelim});
+</script>

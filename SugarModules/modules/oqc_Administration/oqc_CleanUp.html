@@ -1,0 +1,85 @@
+<form name="oqc_CleanUp" id="EditView" method="POST" >
+	<input type="hidden" name="module" value="oqc_Administration">
+	<input type="hidden" name="action">
+	<input type="hidden" name="return_module" value="Administration">
+	<input type="hidden" name="return_action" value="index">
+<br>	
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+
+		<td style="padding-bottom: 2px;">
+			<input title="{$MOD.LBL_CLEANUP_BUTTON_TITLE}" class="button" onclick="this.form.action.value='doCleanup';" type="submit" name="button" value=" {$MOD.LBL_CLEANUP_BUTTON_LABEL} ">
+			<input title="{$APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{$APP.LBL_CANCEL_BUTTON_KEY}" class="button" onclick="this.form.action.value='index'; this.form.module.value='Administration';" type="submit" name="button" value=" {$APP.LBL_CANCEL_BUTTON_LABEL} ">
+		</td>
+		<td align="right" nowrap>
+			
+		</td>
+	</tr>
+</table>
+
+<table id="oqc_Cleanup_panel" class="yui3-skin-sam edit view panelContainer" width="100%" cellspacing="1" cellpadding="0" border="0">
+<tbody>
+<tr>
+<td id="module_list_label" width="12.5%" valign="top" scope="col">{$MOD.LBL_MODULE_LIST}</td>
+<td width="37.5%" valign="top">
+<select id="oqc_module_name" title="" name="oqc_module_name[]" multiple="true" style="width:150px" size="4">
+<option value="{$BEAN_LIST.OQC_PRODUCT}" label="{$MODULE_LIST.OQC_PRODUCT}">{$MODULE_LIST.OQC_PRODUCT}</option>
+<option value="{$BEAN_LIST.OQC_OFFERING}" label="{$MODULE_LIST.OQC_OFFERING}">{$MODULE_LIST.OQC_OFFERING}</option>
+<option value="{$BEAN_LIST.OQC_CONTRACT}" label="{$MODULE_LIST.OQC_CONTRACT}">{$MODULE_LIST.OQC_CONTRACT}</option>
+<option value="{$BEAN_LIST.OQC_EXTERNALCONTRACT}" label="{$MODULE_LIST.OQC_EXTERNALCONTRACT}">{$MODULE_LIST.OQC_EXTERNALCONTRACT}</option>
+</select>
+
+</td>
+<td id="remove_database_label" width="12.5%" valign="top" scope="col"> {$MOD.LBL_REMOVE_FROM_DATABASE}</td>
+<td width="37.5%" valign="top">
+<input type="hidden" value="0" name="remove_database">
+<input id="remove_database" type="checkbox" tabindex="0" title="" value="1" name="remove_database"><br>
+<em>{$MOD.LBL_DELETE_WARNING}</em>
+</td>
+</tr>
+<tr>
+<td id="remove_date_label" width="12.5%" valign="top" scope="col">{$MOD.LBL_REMOVE_DATE}</td>
+<td width="37.5%" valign="top">
+<span class="dateTime">
+<input class="date_input" autocomplete="off" type="text" name="date_remove" id="date_remove" value="{$PRESET_DATE}" title=''  tabindex='1'    size="11" maxlength="10" >
+{capture assign="other_attributes"}alt="{$APP.LBL_ENTER_DATE}" style="position:relative; top:6px" border="0" id="date_remove_trigger"{/capture}
+{sugar_getimage name="jscalendar" ext=".gif" other_attributes="$other_attributes"}
+</span>
+<script type="text/javascript">
+Calendar.setup ({ldelim}
+inputField : "date_remove",
+ifFormat : "{$CALENDAR_FORMAT}",
+daFormat : "{$CALENDAR_FORMAT}",
+button : "date_remove_trigger",
+singleClick : true,
+dateStr : "{$PRESET_DATE}",
+startWeekday: {$CALENDAR_FDOW|default:'0'},
+step : 1,
+weekNumbers:false
+{rdelim}
+);
+</script>
+
+</td>
+<td id="leave_latest_only_label" width="12.5%" valign="top" scope="col"> {$MOD.LBL_LEAVE_LATEST_ONLY}</td>
+<td width="37.5%" valign="center">
+<input type="hidden" value="0" name="leave_latest">
+<input id="leave_latest" type="checkbox" tabindex="2" title="" value="1" name="leave_latest"> <br>
+<em>{$MOD.LBL_DELETE_NON_LATEST_WARNING}</em>
+</td>
+</tr>
+
+</tbody>
+</table>
+
+
+<br>
+<div style="padding-top:2px;">
+			<input title="{$MOD.LBL_CLEANUP_BUTTON_TITLE}" class="button" onclick="this.form.action.value='doCleanup'" type="submit" name="button" value=" {$MOD.LBL_CLEANUP_BUTTON_LABEL} ">
+			<input title="{$APP.LBL_CANCEL_BUTTON_TITLE}" class="button" onclick="this.form.action.value='index'; this.form.module.value='Administration';" type="submit" name="button" value=" {$APP.LBL_CANCEL_BUTTON_LABEL} ">
+			
+</div>
+
+</form>
+
+

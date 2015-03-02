@@ -1,0 +1,71 @@
+<form name="oqc_TaskConfigure" id="EditView" method="POST" >
+	<input type="hidden" name="module" value="oqc_Administration">
+	<input type="hidden" name="action">
+	<input type="hidden" name="return_module" value="Administration">
+	<input type="hidden" name="return_action" value="index">
+	
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+
+		<td style="padding-bottom: 2px;">
+			<input title="{$APP.LBL_SAVE_BUTTON_TITLE}" accessKey="{$APP.LBL_SAVE_BUTTON_KEY}" class="button" onclick="this.form.action.value='saveConfig';" type="submit" name="button" value=" {$APP.LBL_SAVE_BUTTON_LABEL} ">
+			<input title="{$APP.LBL_CANCEL_BUTTON_TITLE}" accessKey="{$APP.LBL_CANCEL_BUTTON_KEY}" class="button" onclick="this.form.action.value='index'; this.form.module.value='Administration';" type="submit" name="button" value=" {$APP.LBL_CANCEL_BUTTON_LABEL} ">
+		</td>
+		<td align="right" nowrap>
+			
+		</td>
+	</tr>
+</table>
+
+<link rel="stylesheet" type="text/css" href="include/oqc/Services/yuiBuild/assets/skins/sam/datatable.css" />
+<script type="text/javascript" src="include/oqc/Task/TaskDefaultUsers.js"></script>
+
+
+
+<span class="yui-skin-sam">
+<div class="yui-dt" style="margin-bottom: 10px;">
+<table width="100%" id="users_table">
+<thead id="users_header">
+
+<tr class="yui-dt-first" style = "font-size: 14px !important;" height="30">
+	<th style = "vertical-align: middle !important; font-weight: bold !important;">{$MOD.LBL_MODULE_NAME_HEADER}</th>
+	<th style = "vertical-align: middle !important; font-weight: bold !important;">{$MOD.LBL_USER_NAME}</th>
+	<th style = "vertical-align: middle !important; font-weight: bold !important;">{$MOD.LBL_ADD_USER_HEADER}</th>
+</tr>
+</thead>
+<tbody width="100%" id='oqc_users'>
+
+
+</tbody>
+</table>
+</div>
+</span>
+
+
+<script type="text/javascript">
+var initialFilterUsers = {$initialFilter};
+// var languageStringsProductOptions = {$languageStringsProductOptions};
+var encodedRequestDataUsers = {$users_popup_encoded_request_data};
+var moduleDropdown = {$modulesDropdown};
+var languageStrings = {$languageStrings};
+
+
+{foreach from=$moduleArray item=module}
+  addModuleRowHtml("{$module.module_name}", "{$module.module_string}");
+	{foreach from=$module.users item=user}
+  		addUserHtml("{$user.id}", "{$user.name}", "{$user.module_name}", "saved"); 
+	{/foreach}  
+{/foreach}
+
+</script>
+
+
+<div style="padding-top:2px;">
+			<input title="{$APP.LBL_SAVE_BUTTON_TITLE}" class="button" onclick="this.form.action.value='saveConfig'" type="submit" name="button" value=" {$APP.LBL_SAVE_BUTTON_LABEL} ">
+			<input title="{$APP.LBL_CANCEL_BUTTON_TITLE}" class="button" onclick="this.form.action.value='index'; this.form.module.value='Administration';" type="submit" name="button" value=" {$APP.LBL_CANCEL_BUTTON_LABEL} ">
+			
+</div>
+
+</form>
+
+

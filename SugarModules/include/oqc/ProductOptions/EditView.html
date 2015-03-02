@@ -1,0 +1,57 @@
+<span class="yui-skin-sam">
+<div class="yui-dt" style="margin-bottom: 10px;">
+<table width="100%" id="options_table"  {if empty($productOptions)} style="display:none;" {/if}>
+<thead id="options_header">
+
+<tr class="yui-dt-first" height="20">
+	<th>{$LBL_NAME}</th>
+	<th >{$LBL_VERSION}</th>
+	<th >{$LBL_STATUS}</th>
+	<th>{$LBL_PRICE}</th>
+	<th >{$LBL_IS_RECURRING_SHORT}</th>
+	<th>{$LBL_DATE_MODIFIED}</th>
+	<th >{$LBL_MODIFIED}</th>
+	<th >{$LBL_DELETE}</th>
+</tr>
+</thead>
+<tbody width="100%" id='oqc_product_options'>
+
+
+</tbody>
+</table>
+</div>
+</span>
+
+{$optionCurrencyJavascript}
+<script type="text/javascript">
+var initialFilterProductOptions = {$initialFilter};
+var languageStringsProductOptions = {$languageStringsProductOptions};
+var encodedRequestDataProductOptions = {$options_popup_encoded_request_data};
+var propt_currencyOptions = {ldelim}
+	prefix: '{$currencySymbol}', 
+	decimalPlaces: 2,
+	decimalSeparator: '{$decimalSeparator}',
+	thousandsSeparator: '{$thousandsSeparator}'
+{rdelim};
+var decimalSeparator = '{$decimalSeparator}';
+var thousandsSeparator = '{$thousandsSeparator}';
+var oqc_option_currency_rate = {$current_rate};
+var oqc_option_current_id = '{$current_id}';
+
+
+
+{foreach from=$productOptions item=productOption}
+  addOptionHtml("{$productOption.id}", "{$productOption.name}", "{$productOption.option_url}", "{$productOption.version}", "{$productOption.status}", "{$productOption.price}" , "{$productOption.is_recurring}" ,  "{$productOption.date_modified}", "{$productOption.modified_by_name}", "{$productOption.row_status}"); 
+{/foreach}
+
+YAHOO.util.Event.addListener(document.getElementsByName('currency_id'), 'change', function() {ldelim}
+	option_updateCurrency();
+{rdelim});
+
+</script>
+
+<div style="padding-top:0.5em; margin-top:0.4em;">
+
+<input class="button" type="button" value="{$addOption}" name="button" onClick='OqcCommon.setModifiedFlag(); options_open_popup(initialFilterProductOptions,encodedRequestDataProductOptions);' />
+</div>
+

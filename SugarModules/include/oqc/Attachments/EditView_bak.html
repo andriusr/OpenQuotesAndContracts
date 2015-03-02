@@ -1,0 +1,33 @@
+<script type="text/javascript" src="include/oqc/common/OQC.js"></script>
+<script type="text/javascript" src="include/oqc/Attachments/Attachments.js"></script>
+<script type="text/javascript" src="include/oqc/CreatePopup/CreatePopup.js"></script>
+<script type="text/javascript" src="include/SubPanel/SubPanelTiles.js"></script>
+<script type="text/javascript" src="include/oqc/scriptaculous/lib/prototype.js"></script>
+<script type="text/javascript" src="include/oqc/scriptaculous/src/scriptaculous.js"></script>
+
+<ol style="padding-left:1.5em;padding-top:0.6em;margin:0px;font-size:10pt;" id="documents">
+</ol>
+<script type="text/javascript">
+var initialFilterAttachments = {$initialFilter};
+var languageStringsAttachments = {$languageStringsAttachments};
+var encodedRequestDataAttachments = {$create_popup_encoded_request_data};
+var encodedRequestRevisionData = {$upload_revision_encoded_request_data};
+
+{foreach from=$attachments item=attachment}
+  addDocumentHtml("{$attachment.id}", "{$attachment.document_name}", "{$attachment.document_revision_id}", {$attachment.is_default}, "saved"); 
+{/foreach}
+
+{* var attachments = eval("{$default_attachments_json|escape:javascript}"); I guess this is some dead code *}
+</script>
+
+<div style="padding-top:0.5em; margin-top:0.4em;">
+
+{* note that you need the isModified hidden field to make sure that OqcCommon.setModifiedFlag works properly. see include/oqc/Products/EditView.html *}
+
+<script type="text/javascript">
+document.write("<input class='button' type='button' value='" + languageStringsAttachments['add'] + "' name='button' onClick='OqcCommon.setModifiedFlag(); open_popup(\"Documents\", 600, 400, initialFilterAttachments, true, true, encodedRequestDataAttachments, \"single\", true);' />&nbsp;&nbsp;");
+{*{if $moduleName != 'oqc_Product'}document.write("<input class='button' type='button' value='" + languageStringsAttachments['addDefault'] + "' name='button' onClick='OqcCommon.setModifiedFlag(); addDefaultAttachments(attachments);' />&nbsp;&nbsp;");{/if} 1.7.5 removed buttons that does not work anyway *}
+document.write("<input class='button' type='button' value='" + languageStringsAttachments['createNew'] + "' name='button' onclick='OqcCommon.setModifiedFlag(); open_CreatePopup(\"Documents\", 950, 480, encodedRequestDataAttachments);' />");
+</script>
+
+</div>

@@ -1,0 +1,21 @@
+{if 'false' == $readOnly}
+{$sqsJavascript}  
+{/if}
+{$currencyJavascript} 
+
+<script type="text/javascript">
+var uniqueServicesDataTable;
+var recurringServicesDataTable;
+var uniqueTotalNegotiatedPriceTable;
+var recurringTotalNegotiatedPriceTable;
+
+OqcServices.initServicesTable('unique', '{$id}', true, {$readOnly});
+OqcServices.initServicesTable('recurring', '{$id}', false, {$readOnly});
+
+YAHOO.util.Event.addListener(document.getElementsByName('currency_id'), 'change', function() {ldelim}
+	OqcServices.updateCurrency();
+	OqcServices.updateSumAndSerializeTableData(uniqueServicesDataTable, 'unique');
+	OqcServices.updateSumAndSerializeTableData(recurringServicesDataTable, 'recurring');
+{rdelim});
+
+</script>

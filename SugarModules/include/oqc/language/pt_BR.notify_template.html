@@ -1,0 +1,108 @@
+<!--
+/*********************************************************************************
+ * SugarCRM Community Edition is a customer relationship management program developed by
+ * SugarCRM, Inc. Copyright (C) 2004-2011 SugarCRM Inc.
+ * 
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Affero General Public License version 3 as published by the
+ * Free Software Foundation with the addition of the following permission added
+ * to Section 15 as permitted in Section 7(a): FOR ANY PART OF THE COVERED WORK
+ * IN WHICH THE COPYRIGHT IS OWNED BY SUGARCRM, SUGARCRM DISCLAIMS THE WARRANTY
+ * OF NON INFRINGEMENT OF THIRD PARTY RIGHTS.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License along with
+ * this program; if not, see http://www.gnu.org/licenses or write to the Free
+ * Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ * 02110-1301 USA.
+ * 
+ * You can contact SugarCRM, Inc. headquarters at 10050 North Wolfe Road,
+ * SW2-130, Cupertino, CA 95014, USA. or at email address contact@sugarcrm.com.
+ * 
+ * The interactive user interfaces in modified source and object code versions
+ * of this program must display Appropriate Legal Notices, as required under
+ * Section 5 of the GNU Affero General Public License version 3.
+ * 
+ * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
+ * these Appropriate Legal Notices must retain the display of the "Powered by
+ * SugarCRM" logo. If the display of the logo is not reasonably feasible for
+ * technical reasons, the Appropriate Legal Notices must display the words
+ * "Powered by SugarCRM".
+ ********************************************************************************/
+
+/*********************************************************************************
+
+ ********************************************************************************/
+-->
+
+<!-- BEGIN: oqc_Task_new_Subject -->
+Nova TeamTask SugarCRM - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_new_Subject -->
+<!-- BEGIN: oqc_Task_new -->
+{ASSIGNER} atribuiu uma TeamTask a {ASSIGNED_USER}.
+A TeamTask será completadas quando {TASK_TYPE} revisá-la e completá-la.
+Assunto: {TASK_SUBJECT}
+Prioridade: {TASK_PRIORITY}
+Data Acordada: {TASK_DUEDATE}
+Status: {TASK_STATUS}
+Descrição: {TASK_DESCRIPTION}
+Confirmar a receção desta TeamTask:
+<{ACCEPT_URL}&accept_status=aceito>
+Você pode revisar esta TeamTask em:
+<{URL}>
+<!-- END: oqc_Task_new -->
+
+<!-- BEGIN: oqc_Task_delete_Subject -->
+TeamTask do SugarCRM Apagada - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_delete_Subject -->
+<!-- BEGIN: oqc_Task_delete -->
+{ASSIGNER} apagou uma TeamTask de {ASSIGNED_USER}.
+
+Assunto: {TASK_SUBJECT}
+Prioridade: {TASK_PRIORITY}
+Data Acordada: {TASK_DUEDATE}
+Status: {TASK_STATUS}
+Descrição: {TASK_DESCRIPTION}
+
+Você pode revisar esta TeamTask em:
+<{URL}>
+<!-- END: oqc_Task_delete -->
+
+<!-- BEGIN: oqc_Task_completed_Subject -->
+TeamTask do SugarCRM Completada - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_completed_Subject -->
+<!-- BEGIN: oqc_Task_completed -->
+{ASSIGNER}: A TeamTask {TASK_ID} está completa!
+
+Assunto: {TASK_SUBJECT}
+Prioridade: {TASK_PRIORITY}
+Data Acordada: {TASK_DUEDATE}
+Status: {TASK_STATUS}
+Descrição: {TASK_DESCRIPTION}
+
+Você pode revisar esta TeamTask em:
+<{URL}>
+<!-- END: oqc_Task_completed -->
+
+<!-- BEGIN: oqc_Task_overdue_Subject -->
+TeamTask do SugarCRM Atrasada - {TASK_SUBJECT}, #{TASK_ID}
+<!-- END: oqc_Task_overdue_Subject -->
+<!-- BEGIN: oqc_Task_overdue -->
+{ASSIGNER}: A TeamTask {TASK_ID} está atrasada!
+Por favor, reveja-a logo que possível!
+
+Assunto: {TASK_SUBJECT}
+Prioridade: {TASK_PRIORITY}
+Data Acordada: {TASK_DUEDATE}
+Status: {TASK_STATUS}
+Descrição: {TASK_DESCRIPTION}
+
+Você pode revisar esta TeamTask em:
+<{URL}>
+<!-- END: oqc_Task_overdue -->
+
+

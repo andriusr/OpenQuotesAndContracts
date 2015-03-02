@@ -1,0 +1,30 @@
+{if !$nextRevisions}
+
+-
+
+{else}
+
+<table class="listView" cellspacing="0px" cellpadding="0px" width="100%" border="0px">
+<tbody>
+<tr>
+	<td class="listViewThS1">Revision</td>
+	<td class="listViewThS1">Name</td>
+	{if $moduleName != 'oqc_Product'}<td class="listViewThS1">Status</td>{/if}
+	<td class="listViewThS1">Date Modified</td>
+	<td class="listViewThS1">Modified by</td>
+</tr>
+
+{foreach from=$nextRevisions item=nextRevision}
+<tr height="20px" onmousedown="setPointer(this, '', 'click', '#ffffff', '#f6f6f6', '');" onmouseout="setPointer(this, '', 'out', '#ffffff', '#f6f6f6', '');" onmousemove="setPointer(this, '', 'over', '#ffffff', '#f6f6f6', '');">
+	<td class="oddListRowS1" valign="top" bgcolor="#ffffff" scope="row"><a href="index.php?module={$moduleName}&action=DetailView&record={$nextRevision.id}">{$nextRevision.version}</a></td>
+	<td class="oddListRowS1" valign="top" bgcolor="#ffffff" scope="row"><a href="index.php?module={$moduleName}&action=DetailView&record={$nextRevision.id}">{$nextRevision.name}</a></td>
+	{if $moduleName != 'oqc_Product'}<td class="oddListRowS1" valign="top" bgcolor="#ffffff" scope="row">{$nextRevision.status}</td>{/if}
+	<td class="oddListRowS1" valign="top" bgcolor="#ffffff" scope="row">{$nextRevision.date_modified}</td>
+	<td class="oddListRowS1" valign="top" bgcolor="#ffffff" scope="row">{$nextRevision.modified_by_name}</td>
+</tr>
+{/foreach}
+
+</tbody>
+</table>
+
+{/if} 

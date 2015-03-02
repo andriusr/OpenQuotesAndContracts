@@ -1,0 +1,32 @@
+{if empty($additions)}
+
+-
+
+{else}
+
+<table class="view list" cellspacing="0px" cellpadding="0px" width="100%" border="0px">
+
+<tr>
+	<th scope="row" width="10%">{$LBL_VERSION}</th>
+	<th scope="row" width="40%">{$LBL_NAME}</th>
+	<th scope="row" width="15%">{$LBL_STATUS}</th>
+	<th scope="row" width="15%">{$LBL_DATE_MODIFIED}</th>
+	<th scope="row" width="20%">{$LBL_MODIFIED}</th>
+</tr>
+
+{foreach from=$additions item=addition}
+<tr height="20px" class="evenListRowS1">
+	<td valign="top"><a href="index.php?module=oqc_Addition&action=DetailView&record={$addition.id}">{$addition.version}</a></td>
+	<td valign="top"><a href="index.php?module=oqc_Addition&action=DetailView&record={$addition.id}">{$addition.name}</a></td>
+	<td valign="top">{$addition.status}</td>
+	<td valign="top">{$addition.date_modified}</td>
+	<td valign="top">{$addition.modified_by_name}</td>
+</tr>
+{/foreach}
+
+
+</table>
+
+
+
+{/if} 
