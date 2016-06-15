@@ -20,6 +20,11 @@ function action_save() {
 				$old_id = $latestRevision->id;
 				$this->bean->version = intval($latestRevision->version +1);
 				}
+// Check and recover relationship to the opportunity
+		$opport_rel = 'opportunities';
+		$this->bean->load_relationship($opport_rel);
+		$linkedBeanIds = $this->bean->$opport_rel->get();
+				
 		if (empty($this->bean->contractid)) {
 			
 			unset($this->bean->id);
@@ -82,6 +87,10 @@ function action_save() {
      		
 		if (!isset($_POST['assigned_user_id'])) {
 		$this->bean->assigned_user_id = $this->bean->created_by;} //2.1 set this only if it is not in $_POST
+		
+		//Add relationship to the oppotunity, if exists
+		foreach ($linkedBeanIds as $id)
+				$this->bean->$opport_rel->add($id);	
 
 		SugarController::action_save();
 

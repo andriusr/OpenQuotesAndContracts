@@ -46,7 +46,7 @@ $subpanel_layout = array(
 //		array('widget_class' => 'SubPanelTopSelectButton', 'popup_module' => $module_name),
 	),
 
-	'where' => '',
+	'where' => 'oqc_offering.is_latest !=0',
 
 	'list_fields' => array(
 	
