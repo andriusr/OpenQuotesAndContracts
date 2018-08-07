@@ -6,7 +6,7 @@
 %\documentclass[a4paper,landscape]{article} %removed landscape, added 10 pt font size, english for language
 \usepackage[english]{babel} %hyphenation
 \usepackage[utf8]{inputenc} %change the input encoding- utf8 is recomennded for new projects
-\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage{amsmath}
 \usepackage{amssymb,amsfonts,textcomp}
 \usepackage{color}

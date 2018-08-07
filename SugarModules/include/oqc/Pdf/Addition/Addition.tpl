@@ -31,7 +31,7 @@
 </if>
 
 \usepackage[utf8]{inputenc} % this sets input file encoding; it is recommended to use utf-8 for all new projects
-\usepackage[T1]{fontenc} % Set required fonts encoding; refer to Latex Manual for more info
+\usepackage{lmodern} % Set required fonts encoding; refer to Latex Manual for more info
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{scrpage2}
